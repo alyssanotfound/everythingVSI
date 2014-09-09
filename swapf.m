@@ -1,4 +1,4 @@
-function close = swapf(srcFiles,position)
+function swapf(srcFiles,position)
 %look at bottom of this image
 filename = strcat('images/',srcFiles(position).name);
 A = imread(filename);
@@ -14,9 +14,24 @@ HSVtops = HSVtops(:,:,1);
 
 [dist,index]=min(abs(HSVtops-HSV));
 
-disp(HSV);
+%disp(HSV);
 %disp(HSVtops);
-disp(HSVtops(index));
-disp(index);
+%disp(HSVtops(index));
+%disp(index);
+matchfile = strcat('images/',srcFiles(index).name);
+undersrc = position+36;
+undersrcfile = strcat('images/',srcFiles(undersrc).name);
+tempfile = 'images/tempfile.jpg';
+%disp(matchfile);
+%disp(undersrcfile);
+%disp(tempfile);
+if ~strcmp(matchfile,undersrcfile)
+    movefile(undersrcfile,tempfile);
+    movefile(matchfile,undersrcfile);
+    movefile(tempfile,matchfile);
+    delete(tempfile);
+end
 
-close = index;
+
+
+

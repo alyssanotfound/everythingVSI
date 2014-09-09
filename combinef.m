@@ -6,6 +6,7 @@ for ii = 0:11
     strip = zeros(207,1,3);
 
     for i = srt:srt+35
+       
        filename = strcat('images/',srcFiles(i).name);
        I = imread(filename);
        I = I(1:207,1:138,:);
