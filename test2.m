@@ -6,7 +6,7 @@ set(gcf,'Color',[1,1,1]);
 I = combinef(srcFiles);
 imshow(I);
 %pass a position number to look at bottom of that image
-for j = 1:1:36
+for j = 1:1:396
     disp(j);
     swapf(srcFiles,j);
 end
