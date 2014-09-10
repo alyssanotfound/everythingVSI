@@ -1,0 +1,18 @@
+clc; clear all; close all;
+
+srcFiles = dir('images/*.jpg');
+
+filename = strcat('images/1.jpg');
+A = imread(filename);
+Abottom = imcrop(A,[0 185 138 22]);
+imshow(Abottom);
+avgBottom = uint8(mean(mean(Abottom)));
+clor = roundn(avgBottom/255;
+for i = 1:length(srcFiles)
+    fn = strcat('images/',srcFiles(i).name);
+    B = imread(fn);
+    Btop = imcrop(B,[0 0 138 22]);
+    avgTop = mean(mean(Btop));
+end
+
+rectangle('Position',[0,0,20,100],'FaceColor',[0.4 0.0 0.2]);

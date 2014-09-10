@@ -1,5 +1,4 @@
-%{
+
 for id = 1:length(srcFiles)
-    movefile(fullfile('images',srcFiles(id).name), fullfile('images',sprintf('%d.jpg', id)));
+    movefile(fullfile('images',srcFiles(id).name), fullfile('imagesfresh',sprintf('%d.jpg', id)));
 end
-%}
