@@ -3,15 +3,7 @@ function swapf(srcFiles,position)
 filename = strcat('images/',srcFiles(position).name);
 A = imread(filename);
 Abottom = imcrop(A,[0 185 138 22]);
-%figure,imshow(Abottom);
 avgBottom = mean(mean(Abottom));
-
-%disp(avgBottom);
-
-%HSV = rgb2hsv(avgBottom);
-%disp(HSV);
-%HSV = rgb2hsv(A(200,70,:));
-%HSVtops = [];
 avgTops = [];
 realindex = [];
 index = [];
@@ -24,50 +16,23 @@ for i = 1:length(srcFiles)
     Btop = imcrop(B,[0 0 138 22]);
     avgTop = mean(mean(Btop));
     avgTops = [avgTops,avgTop];
-    %disp(avgTop);
-    %HSVtops = [HSVtops,rgb2hsv(avgTop)];
 end
-%HSV = HSV(:,:,1);
-%HSVtops = HSVtops(:,:,1);
 
 a1 = abs(avgTops(:,:,1)-avgBottom(:,:,1));
 a2 = abs(avgTops(:,:,2)-avgBottom(:,:,2));
 a3 = abs(avgTops(:,:,3)-avgBottom(:,:,3));
 aF = a1+a2+a3;
-%disp(size(aF));
-srt = position+37;
-%disp(size(aF(:,srt:end)));
+srt = position+36;
 subsample = aF(:,srt:length(srcFiles));
 [dist,index]=min( subsample );
 
-%disp(index);
-%disp(position);
-
-
 undersrc = position+36;
-realindex = index+position+36;
-disp(realindex);
-disp(undersrc);
-%disp(size(HSVtops));
-%disp(size(HSV));
-%disp(avgTops(1,index,:));
-%disp(HSVtops(index));
+realindex = index+position+35;
 
-%disp(index);
-
-%matchfile = strcat('images/',int2str(realindex),'.jpg');
 matchfile = strcat('images/',srcFiles(realindex).name);
-
-%undersrcfile = strcat('images/',int2str(undersrc),'.jpg');
 undersrcfile = strcat('images/',srcFiles(undersrc).name);
 
 tempfile = 'images/tempfile.jpg';
-%figure,imshow(matchfile);
-%disp(matchfile);
-%figure,imshow(undersrcfile);
-%disp(undersrcfile);
-%disp(tempfile);
-
 
 if ~strcmp(matchfile,undersrcfile) 
     movefile(undersrcfile,tempfile);
@@ -76,9 +41,6 @@ if ~strcmp(matchfile,undersrcfile)
     delete(tempfile);
 end
 
-
-%figure, imshow(filename);
-%figure, imshow(matchfile);
 
 
 
