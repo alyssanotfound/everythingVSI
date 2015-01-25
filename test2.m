@@ -15,9 +15,9 @@ end
 %}
 
 %swap columns
-swapclmnsf(srcFiles);
+%swapclmnsf(srcFiles);
 
 %after all images have been swapped, show new image
 %set(gcf,'Color',[1,1,1]);
-%J = combinef(srcFiles);
-%figure,imshow(J);
+J = combinef(srcFiles);
+figure,imshow(J);

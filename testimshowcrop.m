@@ -1,7 +1,7 @@
 clc; clear all; close all;
 
 srcFiles = dir('images/*.jpg');
-position = 11;
+position = 3;
 filename = strcat('images/',srcFiles(position).name);
 A = imread(filename);
 Abottom = imcrop(A,[0 185 138 22]);
